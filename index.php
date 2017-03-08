@@ -13,7 +13,7 @@ global $conn;
                     <div class="in_service_header">Our <span>Services</span></div>
     				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-pad-left">
     					<div class="service_block">
-    						<div class="img_block"><img src="<?php echo SITE_URL;?>uploads/content/<?php echo $service_image;?>" alt=""> </div>
+    						<div class="img_block"><img src="uploads/content/<?php echo $service_image;?>" alt=""> </div>
     					</div>
     				</div>
           			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -30,8 +30,8 @@ global $conn;
                                 ?>
              					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
              						<div class="in_service_area">
-             							<div class="in_ser_icon_area1"><img src="<?php echo SITE_URL;?>uploads/service/icon/<?php echo $arr_services['service_icon'];?>" alt=""></div>
-             							<div class="in_ser_header"><a href="<?php echo SITE_URL;?>services/"><?php echo stripslashes($arr_services['service_title']);?></a></div>
+             							<div class="in_ser_icon_area1"><img src="uploads/service/icon/<?php echo $arr_services['service_icon'];?>" alt=""></div>
+             							<div class="in_ser_header"><a href="services/"><?php echo stripslashes($arr_services['service_title']);?></a></div>
              							<div class="in_ser_text_area"><?php echo substr(stripslashes($arr_services['service_content']),0,220);?>...</div>
              						</div>
              					</div>
@@ -62,13 +62,13 @@ global $conn;
 			<div class="welcome_main_area">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="welcome_img"><img src="<?php echo SITE_URL;?>uploads/content/<?php echo $home_content_image;?>" width="385" height="225" alt=""></div>
+                        <div class="welcome_img"><img src="uploads/content/<?php echo $home_content_image;?>" width="385" height="225" alt=""></div>
                     </div>
      				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
  						<div class="welcome_main_text_area">
  							<div class="welcome_text_header">Welcome To <span>Mobile Locksmiths Perth</span></div>
 								<div class="welcome_text_container"><?php echo $home_content;?></div>
- 								<div class="welcome_read_more_btn"><a href="<?php echo SITE_URL;?>homepage-text/"><img src="<?php echo SITE_URL;?>img/read_more_btn.png" width="103" height="31" alt=""></a></div>
+ 								<div class="welcome_read_more_btn"><a href="homepage-text/"><img src="img/read_more_btn.png" width="103" height="31" alt=""></a></div>
                         </div>
                     </div>
                 </div>
@@ -113,9 +113,9 @@ global $conn;
                                                         <div class="author_img">
                                                         <?php if($arr_testimonials['sender_type'] =="General") { ?>
                                                         <?php if($arr_testimonials['sender_image']!="") { ?>
-                                                            <img class="img-responsive" src="<?php echo SITE_URL;?>uploads/testimonial/thumb/<?php echo $arr_testimonials['sender_image'];?>" alt="">
+                                                            <img class="img-responsive" src="uploads/testimonial/thumb/<?php echo $arr_testimonials['sender_image'];?>" alt="">
                                                             <?php } else { ?>
-                                                            <img class="img-responsive" src="<?php echo SITE_URL;?>img/no_image.png" alt="">
+                                                            <img class="img-responsive" src="img/no_image.png" alt="">
 															<?php } ?>
                                                             <?php } else { ?>
                                                             <img src="<?php echo $arr_testimonials['sender_image'];?>" border="0" alt="" />
@@ -149,7 +149,7 @@ global $conn;
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
                         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <div class="review_area"><a href="<?php echo SITE_URL;?>reviews/"><img src="<?php echo SITE_URL;?>img/read_more_btn.png" width="103" height="31" alt=""></a></div>
+                            <div class="review_area"><a href="reviews/"><img src="img/read_more_btn.png" width="103" height="31" alt=""></a></div>
                         </div>
                     </div>
                 </div>

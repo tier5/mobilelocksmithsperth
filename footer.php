@@ -13,18 +13,18 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footer_link_area_main">
                                             <div class="footer_link_area2">
                                                 <ul>
-                                                    <li><a href="<?php echo SITE_URL;?>">Home</a></li>
-                                                    <li><a href="<?php echo SITE_URL;?>local-professional/">Local Professional</a></li>
-                                                    <li><a href="<?php echo SITE_URL;?>services/">Services</a></li>
+                                                    <li><a href="">Home</a></li>
+                                                    <li><a href="local-professional/">Local Professional</a></li>
+                                                    <li><a href="services/">Services</a></li>
                                                 </ul>
                                             </div> 
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footer_link_area_main">
                                             <div class="footer_link_area2">
                                                 <ul>
-                                                    <li><a href="<?php echo SITE_URL;?>gallery/">Product Gallery</a></li>
-                                                    <li><a href="<?php echo SITE_URL;?>reviews/">Client Reviews</a></li>
-                                                    <li><a href="<?php echo SITE_URL;?>contact-us/">Contact Us</a></li>
+                                                    <li><a href="gallery/">Product Gallery</a></li>
+                                                    <li><a href="reviews/">Client Reviews</a></li>
+                                                    <li><a href="contact-us/">Contact Us</a></li>
                                                 </ul>
                                             </div> 
                                         </div>
@@ -38,15 +38,15 @@
        					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
        						<div class="footer_header2">
        							<ul>
-       								<li><img src="<?php echo SITE_URL;?>img/footer_text_header_bg.png" alt=""></li>
+       								<li><img src="img/footer_text_header_bg.png" alt=""></li>
        								<li>Follow Us On</li>
        							</ul>
        						</div>
     						<div class="social_area">
     							<ul>
-    								<li class="social_area_ajs"><a href="<?php echo $facebook_link;?>" target="_blank"><img src="<?php echo SITE_URL;?>img/social_img1.png" alt=""></a></li>
-                                    <li><a href="<?php echo $gplus_link;?>" target="_blank"><img src="<?php echo SITE_URL;?>img/social_img2.png" alt=""></a></li>
-                                    <li><a href="<?php echo $youtube_link;?>" target="_blank"><img src="<?php echo SITE_URL;?>img/social_img3.png" alt=""></a></li>
+    								<li class="social_area_ajs"><a href="<?php echo $facebook_link;?>" target="_blank"><img src="img/social_img1.png" alt=""></a></li>
+                                    <li><a href="<?php echo $gplus_link;?>" target="_blank"><img src="img/social_img2.png" alt=""></a></li>
+                                    <li><a href="<?php echo $youtube_link;?>" target="_blank"><img src="img/social_img3.png" alt=""></a></li>
     							</ul>
     						</div>
     					</div>

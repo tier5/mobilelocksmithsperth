@@ -43,15 +43,15 @@ $service_image = stripslashes($fetch_settings['service_image']);
     <meta name="keywords" content="<?php echo $meta_keywords;?>" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo SITE_URL;?>css/custom.css">
-    <link rel="stylesheet" href="<?php echo SITE_URL;?>css/responsive_style.css">
-    <link rel="stylesheet" href="<?php echo SITE_URL;?>css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/responsive_style.css">
+    <link rel="stylesheet" href="css/animate.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
-    <script src="<?php echo SITE_URL;?>js/wow.js"></script>
-    <script src="<?php echo SITE_URL;?>js/custom.js"></script>
-    <script src="<?php echo SITE_URL;?>Scripts/swfobject_modified.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
     
     <script language="javascript" type="text/javascript">
     function closeDiv()
@@ -70,20 +70,20 @@ $service_image = stripslashes($fetch_settings['service_image']);
     	<div class="header_top">
         	<div class="header_top2">
           	<object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="891" height="36">
-            <param name="movie" value="<?php echo SITE_URL;?>swf/light_on_off.swf">
+            <param name="movie" value="swf/light_on_off.swf">
             <param name="quality" value="high">
             <param name="wmode" value="opaque">
             <param name="swfversion" value="9.0.45.0">
             <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
-            <param name="expressinstall" value="<?php echo SITE_URL;?>Scripts/expressInstall.swf">
+            <param name="expressinstall" value="Scripts/expressInstall.swf">
             <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
             <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="<?php echo SITE_URL;?>swf/light_on_off.swf" width="891" height="36">
+            <object type="application/x-shockwave-flash" data="swf/light_on_off.swf" width="891" height="36">
               <!--<![endif]-->
               <param name="quality" value="high">
               <param name="wmode" value="opaque">
               <param name="swfversion" value="9.0.45.0">
-              <param name="expressinstall" value="<?php echo SITE_URL;?>Scripts/expressInstall.swf">
+              <param name="expressinstall" value="Scripts/expressInstall.swf">
               <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
               <div>
                 <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
@@ -98,7 +98,7 @@ $service_image = stripslashes($fetch_settings['service_image']);
         <div class="header_bottom">
         	<div class="container">
             	<div class="col-lg-5 col-md-5 col-sm-4 col-xs-12 logo_section">
-                	<a href="<?php echo SITE_URL;?>"><img src="<?php echo SITE_URL;?>img/logo.png"></a> 
+                	<a href=""><img src="img/logo.png"></a> 
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 text-right main_menu ">
                 	<div id="nav" class="nav_section">
@@ -106,18 +106,18 @@ $service_image = stripslashes($fetch_settings['service_image']);
             				<nav class="navbar navbar_content nav_list"> 
               					<!-- Brand and toggle get grouped for better mobile display -->
               					<div class="navbar-header">
-              						<div class="res_logo wow fadeInDown"> <a href="<?php echo SITE_URL;?>"><img src="<?php echo SITE_URL;?>img/small_logo.png"></a> </div>
+              						<div class="res_logo wow fadeInDown"> <a href=""><img src="img/small_logo.png"></a> </div>
                 					<button id="res-nav-btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
               					</div>
              					<!-- Collect the nav links, forms, and other content for toggling -->
               					<div class="collapse navbar-collapse all_menu" id="bs-example-navbar-collapse-1">
 				  					<ul class="nav navbar-nav menu_list navbar-right">
-                    					<li class="one_line_nav <?php if($current_page == 'index.php') { ?>active<?php } ?>"><a href="<?php echo SITE_URL;?>">Home</a></li>
-                    					<li <?php if($current_page == 'local.php') { ?>class="active"<?php } ?>><a href="<?php echo SITE_URL;?>local-professional/">LOCAL<br>PROFESSIONAL</a></li>
-                   	 					<li class="one_line_nav <?php if($current_page == 'services.php') { ?>active<?php } ?>"><a href="<?php echo SITE_URL;?>services/">Services</a></li>
-                    					<li <?php if($current_page == 'gallery.php') { ?>class="active"<?php } ?>><a href="<?php echo SITE_URL;?>gallery/">Product<br>Gallery</a></li>
-                    					<li <?php if($current_page == 'reviews.php') { ?>class="active"<?php } ?>><a href="<?php echo SITE_URL;?>reviews/">Client<br>Reviews</a></li>
-                    					<li class="one_line_nav <?php if($current_page == 'contact_us.php') { ?>active<?php } ?>"><a href="<?php echo SITE_URL;?>contact-us/">Contact Us</a></li>
+                    					<li class="one_line_nav <?php if($current_page == 'index.php') { ?>active<?php } ?>"><a href="">Home</a></li>
+                    					<li <?php if($current_page == 'local.php') { ?>class="active"<?php } ?>><a href="local-professional/">LOCAL<br>PROFESSIONAL</a></li>
+                   	 					<li class="one_line_nav <?php if($current_page == 'services.php') { ?>active<?php } ?>"><a href="services/">Services</a></li>
+                    					<li <?php if($current_page == 'gallery.php') { ?>class="active"<?php } ?>><a href="gallery/">Product<br>Gallery</a></li>
+                    					<li <?php if($current_page == 'reviews.php') { ?>class="active"<?php } ?>><a href="reviews/">Client<br>Reviews</a></li>
+                    					<li class="one_line_nav <?php if($current_page == 'contact_us.php') { ?>active<?php } ?>"><a href="contact-us/">Contact Us</a></li>
                   					</ul>
               					</div>
               					<!-- /.navbar-collapse --> 
@@ -178,7 +178,7 @@ $service_image = stripslashes($fetch_settings['service_image']);
 						  $banner_image_active_class = 'item';
 					  }
 			  	  	?>
-              		<div class="<?php echo $banner_image_active_class;?>"><img src="<?php echo SITE_URL;?>uploads/banner/<?php echo $arr_banner_image['banner_image'];?>" alt="" border="0"></div>
+              		<div class="<?php echo $banner_image_active_class;?>"><img src="uploads/banner/<?php echo $arr_banner_image['banner_image'];?>" alt="" border="0"></div>
               		<?php
 					$banner_image_counter++;
 				  }
@@ -202,7 +202,7 @@ $service_image = stripslashes($fetch_settings['service_image']);
             <div class="container">
                 <ul>
                     <li class="banner_bottom_text"><?php echo strtoupper($company_name);?></li>
-                    <li class="banner_bottom_text"><a href="tel:<?php echo str_replace(' ', '',$contact_no);?>"><?php echo $contact_no;?></a><a href="javascript:void(0);" onClick="closeDiv2();"><img src="<?php echo SITE_URL;?>img/close.png" alt="" border="0"></a></li>
+                    <li class="banner_bottom_text"><a href="tel:<?php echo str_replace(' ', '',$contact_no);?>"><?php echo $contact_no;?></a><a href="javascript:void(0);" onClick="closeDiv2();"><img src="img/close.png" alt="" border="0"></a></li>
                 </ul>
              </div>
         </div>
