@@ -53,7 +53,7 @@ global $conn;
     
     <!--welcome text area start-->
 	<?php
-    $fetch_home_content = mysqli_fetch_array(mysql_query($conn,"SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
+    $fetch_home_content = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
     $home_content = stripslashes($fetch_home_content['content']);
     $home_content_image = stripslashes($fetch_home_content['content_image']);
     ?>
