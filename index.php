@@ -1,5 +1,8 @@
-<?php require_once("header.php");?>
+<?php require_once("header.php");
+require_once("config.php");
+global $conn; 
 
+?>
 <!-- page template part start -->
 <section>
 	<!--services area start-->
@@ -18,11 +21,11 @@
 						<?php
 						$service_counter = 1;
                         $sql_services = "SELECT * FROM `ml_services` WHERE `service_status` = 'Active' AND `homepage_display` = 'Yes'";
-                        $exe_services = mysql_query($sql_services) or die(mysql_error());
-                        $num_services = mysql_num_rows($exe_services);
+                        $exe_services = mysqli_query($conn, $sql_services) or die(mysqli_error());
+                        $num_services = mysqli_num_rows($exe_services);
                         if($num_services>0)
                         {
-                            while($arr_services = mysql_fetch_array($exe_services))
+                            while($arr_services = mysqli_fetch_array($exe_services))
                             {
                                 ?>
              					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -50,7 +53,7 @@
     
     <!--welcome text area start-->
 	<?php
-    $fetch_home_content = mysql_fetch_array(mysql_query("SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
+    $fetch_home_content = mysqli_fetch_array(mysql_query($conn,"SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
     $home_content = stripslashes($fetch_home_content['content']);
     $home_content_image = stripslashes($fetch_home_content['content_image']);
     ?>
@@ -87,11 +90,11 @@
 							<?php
 							$testimonial_counter = 1;
                             $sql_testimonials = "SELECT * FROM `ml_testimonials` WHERE `testimonial_status` = 'Active' ORDER BY `testimonial_id` DESC";
-                            $exe_testimonials = mysql_query($sql_testimonials) or die(mysql_error());
-                            $num_testimonials = mysql_num_rows($exe_testimonials);
+                            $exe_testimonials = mysqli_query($conn,$sql_testimonials) or die(mysqli_error());
+                            $num_testimonials = mysqli_num_rows($exe_testimonials);
                             if($num_testimonials>0)
                             {
-                                while($arr_testimonials = mysql_fetch_array($exe_testimonials))
+                                while($arr_testimonials = mysqli_fetch_array($exe_testimonials))
                                 {
 									if($testimonial_counter == 1)
 									{

@@ -1,10 +1,13 @@
 <?php
+
+require_once("config.php");
+global $conn; 
 $sql_meta = "SELECT * FROM `ml_meta` WHERE `page_link` = '".$current_page."'";
-$exe_meta = mysql_query($sql_meta) or die(mysql_error());
-$num_meta = mysql_num_rows($exe_meta);
+$exe_meta = mysqli_query($conn, $sql_meta) or die(mysqli_error());
+$num_meta = mysqli_num_rows($exe_meta);
 if($num_meta>0)
 {
-	$fetch_meta = mysql_fetch_array($exe_meta);
+	$fetch_meta = mysqli_fetch_array($exe_meta);
 	
 	if($fetch_meta['meta_title']!="")
 	{

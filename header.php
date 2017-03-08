@@ -7,6 +7,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 $current_page_full_url = basename($_SERVER['REQUEST_URI']);
 
 require_once("config.php");
+global $conn;
 require_once("meta.php");
 require_once("class.upload.php");
 require_once("counter.php");
