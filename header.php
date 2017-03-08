@@ -13,7 +13,7 @@ require_once("class.upload.php");
 require_once("counter.php");
 
 //FETCH SITE SETTINGS
-$fetch_settings = mysql_fetch_array(mysql_query("SELECT * FROM `ml_administrator` WHERE `admin_id` = '1'"));
+$fetch_settings = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_administrator` WHERE `admin_id` = '1'"));
 $company_name = stripslashes($fetch_settings['company_name']);
 $contact_address = stripslashes($fetch_settings['contact_address']);
 $contact_email = stripslashes($fetch_settings['contact_email']);
@@ -137,11 +137,11 @@ $service_image = stripslashes($fetch_settings['service_image']);
 			  <?php
 			  $banner_counter = 0;
 			  $sql_banner_counter = "SELECT * FROM `ml_banners` WHERE `banner_status` = 'Active'";
-			  $exe_banner_counter = mysql_query($sql_banner_counter) or die(mysql_error());
-			  $num_banner_counter = mysql_num_rows($exe_banner_counter);
+			  $exe_banner_counter = mysqli_query($conn, $sql_banner_counter) or die(mysqli_error());
+			  $num_banner_counter = mysqli_num_rows($exe_banner_counter);
 			  if($num_banner_counter>0)
 			  {
-				  while($arr_banner_counter = mysql_fetch_array($exe_banner_counter))
+				  while($arr_banner_counter = mysqli_fetch_array($conn, $exe_banner_counter))
 				  {
 					  if($banner_counter == 0)
 					  {
@@ -163,11 +163,11 @@ $service_image = stripslashes($fetch_settings['service_image']);
 			  <?php
 			  $banner_image_counter = 1;
 			  $sql_banner_image = "SELECT * FROM `ml_banners` WHERE `banner_status` = 'Active'";
-			  $exe_banner_image = mysql_query($sql_banner_image) or die(mysql_error());
-			  $num_banner_image = mysql_num_rows($exe_banner_image);
+			  $exe_banner_image = mysqli_query($conn, $sql_banner_image) or die(mysqli_error());
+			  $num_banner_image = mysqli_num_rows($exe_banner_image);
 			  if($num_banner_image>0)
 			  {
-				  while($arr_banner_image = mysql_fetch_array($exe_banner_image))
+				  while($arr_banner_image = mysqli_fetch_array($exe_banner_image))
 				  {
 					  if($banner_image_counter == 1)
 					  {
