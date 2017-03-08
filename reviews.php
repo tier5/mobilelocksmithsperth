@@ -11,7 +11,7 @@
                     	<?php
 						$adjacents = 3;
 						$query = "SELECT COUNT(*) as `num` FROM `ml_testimonials` WHERE `testimonial_status` = 'Active'";
-						$total_pages = mysql_fetch_array(mysql_query($query));
+						$total_pages = mysqli_fetch_array(mysqli_query($conn, $query));
 						$total_pages = $total_pages['num'];
                         if($total_pages>0)
                         {
@@ -26,7 +26,7 @@
 			
 							/* Get data. */
 							$sql_testimonial = "SELECT * FROM `ml_testimonials` WHERE `testimonial_status` = 'Active' ORDER BY `testimonial_id` DESC LIMIT $start, $limit";
-							$result = mysql_query($sql_testimonial);
+							$result = mysqli_query($conn,$sql_testimonial);
 								
 							if ($page == 0) $page = 1;					//if no page var is given, default to 1.
 							$prev = $page - 1;							//previous page is page - 1
@@ -106,7 +106,7 @@
                             
                             $pagination.= "</ul></div>";	
                             }
-                            while($arr_testimonials = mysql_fetch_array($result))
+                            while($arr_testimonials = mysqli_fetch_array($conn, $result))
                             {
                             	?>
                                 <div class="review_container">

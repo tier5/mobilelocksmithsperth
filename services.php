@@ -10,11 +10,11 @@
           			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ser_no_pad">
                     <?php
 					$sql_services = "SELECT * FROM `ml_services` WHERE `service_status` = 'Active' ORDER BY `service_id` DESC";
-					$exe_services = mysql_query($sql_services) or die(mysql_error());
-					$num_services = mysql_num_rows($exe_services);
+					$exe_services = mysqli_query($conn,$sql_services) or die(mysqli_error());
+					$num_services = mysqli_num_rows($exe_services);
 					if($num_services>0)
 					{
-						while($arr_services = mysql_fetch_array($exe_services))
+						while($arr_services = mysqli_fetch_array($exe_services))
 						{
 							?>
           					<div class="ser_container">

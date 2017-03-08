@@ -10,8 +10,8 @@
           			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ser_no_pad">
                     <?php
 					$sql_text = "SELECT * FROM `ml_contents` WHERE `content_id` = '1'";
-					$exe_text = mysql_query($sql_text) or die(mysql_error());
-					$arr_text = mysql_fetch_array($exe_text);
+					$exe_text = mysqli_query($conn, $sql_text) or die(mysqli_error());
+					$arr_text = mysqli_fetch_array($exe_text);
 					?>
                         <div class="ser_container">
                             <div class="row">

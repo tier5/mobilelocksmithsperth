@@ -46,7 +46,7 @@ if(isset($_POST['review_send']))
 
 	$sql_insert = "INSERT INTO `ml_testimonials` SET `sender_name` = '".addslashes($_POST['name'])."',`sender_email` = '".addslashes($_POST['email'])."',`sender_city` = '".addslashes($_POST['city'])."',`sender_comments` = '".addslashes($_POST['comments'])."',`sender_image` = '".$sender_image_insert."',`testimonial_status` = 'Inactive',`post_date` = '".date('Y-m-d H:i:s')."'";
 	//echo $sql_insert;exit;
-	$exe_insert = mysql_query($sql_insert) or die(mysql_error());
+	$exe_insert = mysqli_query($conn, $sql_insert) or die(mysqli_error());
 	
 	$_SESSION['msg_succr'] = 'Your comment will display after admin approval.';
 	header("location: ".$_SERVER['REQUEST_URI']);

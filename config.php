@@ -20,8 +20,6 @@ if (mysqli_connect_errno())
   	return $conn;
   }
 
-//DEFINE SITE URL
-define('SITE_URL','http://localhost/lockrepairsperth/');
 
 //PAGINATION RECORDS PER PAGE
 $testimonial_records_per_page = 5;
