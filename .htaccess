@@ -1,0 +1,15 @@
+RewriteEngine on
+#Force www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^lockrepairsperth.com.au [NC]
+RewriteRule ^(.*)$ http://www.lockrepairsperth.com.au/$1 [L,R=301,NC]
+
+RewriteRule ^local-professional/$ local.php
+RewriteRule ^services/$ services.php
+RewriteRule ^reviews/$ reviews.php
+RewriteRule ^contact-us/$ contact_us.php
+RewriteRule ^gallery/$ gallery.php
+RewriteRule ^homepage-text/$ homepage_text.php
+
+RewriteRule ^reviews/facebook$ reviews.php?post_from=facebook
+RewriteRule ^reviews/page/(.*)$ reviews.php?page=$1
