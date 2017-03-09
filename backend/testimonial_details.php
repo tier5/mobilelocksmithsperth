@@ -3,7 +3,7 @@ require_once("header.php");
 require_once("session_check.php");
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_testimonials` WHERE `testimonial_id` = '".$_GET['testimonial_id']."'"));
+$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_testimonials` WHERE `testimonial_id` = '".$_GET['testimonial_id']."'"));
 ?>
 <?php require_once("left_panel.php");?>
 <div class="content">

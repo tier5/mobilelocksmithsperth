@@ -35,11 +35,11 @@ require_once("session_check.php");
 							<?php
 							$seo_counter = 1;
 							$sql_record = "SELECT * FROM `ml_meta` ORDER BY `meta_id` DESC";
-                            $exe_record = mysql_query($sql_record) or die();
-                            $num_record = mysql_num_rows($exe_record);
+                            $exe_record = mysqli_query($conn, $sql_record) or die();
+                            $num_record = mysqli_num_rows($exe_record);
                             if($num_record>0)
                             {
-                                while($fetch_record = mysql_fetch_array($exe_record))
+                                while($fetch_record = mysqli_fetch_array($exe_record))
                                 {
 									$page_name = $fetch_record['page_name'];
 									$meta_title = stripslashes($fetch_record['meta_title']);

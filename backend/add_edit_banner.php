@@ -2,7 +2,7 @@
 require_once("header.php");
 require_once("session_check.php");
 require_once('class.upload.php');
-
+global $conn;
 //CODE FOR ADD BANNER
 if(isset($_POST['add']))
 {
@@ -18,7 +18,7 @@ if(isset($_POST['add']))
 	}
 	
 	$sql_insert = "INSERT INTO `ml_banners` SET `banner_image` = '".$banner_image."',`banner_status` = 'Active'";
-	$exe_insert = mysql_query($sql_insert) or die(mysql_error());
+	$exe_insert = mysqli_query($conn, $sql_insert) or die(mysqli_error());
 	
 	$_SESSION['add_succ_msg'] = 'Banner addded successfully.';
 	header("location: banner_list.php");
@@ -46,7 +46,7 @@ if(isset($_POST['edit']))
 	}
 	
 	$sql_update = "UPDATE `ml_banners` SET `banner_image` = '".$banner_image."' WHERE `banner_id` = '".$_REQUEST['banner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn,$sql_update) or die(mysqli_error());
 	
 	$_SESSION['edit_succ_msg'] = 'Banner updated successfully.';
 	header("location: banner_list.php");
@@ -56,7 +56,7 @@ if(isset($_POST['edit']))
 //FETCH DATA FROM DATABASE
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == "edit") 
 {
-	$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_banners` WHERE `banner_id` = '".$_REQUEST['banner_id']."'"));
+	$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_banners` WHERE `banner_id` = '".$_REQUEST['banner_id']."'"));
 	$banner_image = stripslashes($fetch_record['banner_image']);
 }
 ?>

@@ -6,7 +6,7 @@ require_once("session_check.php");
 if(isset($_GET['action']) && $_GET['action'] == "inactive")
 {
 	$sql_update = "UPDATE `ml_banners` SET `banner_status` = 'Inactive' WHERE `banner_id` = '".$_GET['banner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Banner de-activated successfully.';
 	header("location: banner_list.php");
@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == "inactive")
 if(isset($_GET['action']) && $_GET['action'] == "active")
 {
 	$sql_update = "UPDATE `ml_banners` SET `banner_status` = 'Active' WHERE `banner_id` = '".$_GET['banner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Banner activated successfully.';
 	header("location: banner_list.php");
@@ -28,15 +28,15 @@ if(isset($_GET['action']) && $_GET['action'] == "active")
 if(isset($_GET['action']) && $_GET['action'] == "delete")
 {
 	$sql_banner_image = "SELECT * FROM `ml_banners` WHERE `banner_id` = '".$_GET['banner_id']."'";
-	$exe_banner_image = mysql_query($sql_banner_image) or die(mysql_error());
-	while($arr_banner_image = mysql_fetch_array($exe_banner_image))
+	$exe_banner_image = mysqli_query($conn, $sql_banner_image) or die(mysqli_error());
+	while($arr_banner_image = mysqli_fetch_array($exe_banner_image))
 	{
 		if($arr_banner_image['banner_image']!="")
 		{
 			unlink("../uploads/banner/".$arr_banner_image['banner_image']);
 		}
 	}
-	mysql_query("DELETE FROM `ml_banners` WHERE `banner_id` = '".$_GET['banner_id']."'") or die(mysql_error());
+	mysqli_query($conn, "DELETE FROM `ml_banners` WHERE `banner_id` = '".$_GET['banner_id']."'") or die(mysqli_error());
 	
 	$_SESSION['del_succ_msg'] = 'Banner deleted successfully.';
 	header("location: banner_list.php");
@@ -104,11 +104,11 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 							<?php
 							$banner_counter = 1;
 							$sql_record = "SELECT * FROM `ml_banners` ORDER BY `banner_id` DESC";
-                            $exe_record = mysql_query($sql_record) or die();
-                            $num_record = mysql_num_rows($exe_record);
+                            $exe_record = mysqli_query($conn, $sql_record) or die();
+                            $num_record = mysqli_num_rows($exe_record);
                             if($num_record>0)
                             {
-                                while($fetch_record = mysql_fetch_array($exe_record))
+                                while($fetch_record = mysqli_fetch_array($exe_record))
                                 {
 									$banner_image = $fetch_record['banner_image'];
 									$banner_status = $fetch_record['banner_status'];

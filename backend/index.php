@@ -5,11 +5,11 @@ require_once("header_home.php");
 if(isset($_POST['login']))
 {
 	$sql_check = "SELECT * FROM `ml_administrator` WHERE `admin_username` = '".$_POST['username']."' AND `admin_password` = '".md5($_POST['password'])."'";
-	$exe_check = mysql_query($sql_check) or die(mysql_error());
-	$num_check = mysql_num_rows($exe_check); 
+	$exe_check = mysqli_query($conn, $sql_check) or die(mysqli_error());
+	$num_check = mysqli_num_rows($exe_check); 
 	if($num_check>0)
 	{
-		$arr_check = mysql_fetch_array($exe_check);
+		$arr_check = mysqli_fetch_array($exe_check);
 		$_SESSION['LOGIN_ID'] = $arr_check['admin_id'];
 		header("location: dashboard.php");
 	}

@@ -6,12 +6,12 @@ require_once("session_check.php");
 if(isset($_POST['cp']))
 {
 	$sql_check = "SELECT * FROM `ml_administrator` WHERE `admin_password` = '".md5($_POST['old_password'])."' AND `admin_id` = '".$_SESSION['LOGIN_ID']."'";
-	$exe_check = mysql_query($sql_check) or die(mysql_error());
-	$num_check = mysql_num_rows($exe_check);
+	$exe_check = mysqli_query($conn, $sql_check) or die(mysqli_error());
+	$num_check = mysqli_num_rows($exe_check);
 	if($num_check>0)
 	{
 		$sql_update = "UPDATE `ml_administrator` SET `admin_password` = '".md5($_POST['confirm_password'])."',`admin_original_password` = '".$_POST['confirm_password']."' WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'";
-		$exe_update = mysql_query($sql_update) or die(mysql_error());
+		$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 		
 		$_SESSION['cp_succ_msg'] = 'Password changed successfully.';
 		header("location: change_password.php");

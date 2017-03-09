@@ -19,7 +19,7 @@ if(isset($_POST['add']))
 	}
 	
 	$sql_insert = "INSERT INTO `ml_partners` SET `partner_image` = '".$partner_image."',`partner_link` = '".addslashes($_POST['partner_link'])."',`partner_status` = 'Active'";
-	$exe_insert = mysql_query($sql_insert) or die(mysql_error());
+	$exe_insert = mysqli_query($conn, $sql_insert) or die(mysqli_error());
 	
 	$_SESSION['add_succ_msg'] = 'Partner addded successfully.';
 	header("location: partner_list.php");
@@ -48,7 +48,7 @@ if(isset($_POST['edit']))
 	}
 	
 	$sql_update = "UPDATE `ml_partners` SET `partner_image` = '".$partner_image."',`partner_link` = '".addslashes($_POST['partner_link'])."' WHERE `partner_id` = '".$_REQUEST['partner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['edit_succ_msg'] = 'Partner updated successfully.';
 	header("location: partner_list.php");
@@ -58,7 +58,7 @@ if(isset($_POST['edit']))
 //FETCH DATA FROM DATABASE
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == "edit") 
 {
-	$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_partners` WHERE `partner_id` = '".$_REQUEST['partner_id']."'"));
+	$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_partners` WHERE `partner_id` = '".$_REQUEST['partner_id']."'"));
 	$partner_image = stripslashes($fetch_record['partner_image']);
 	$partner_link = stripslashes($fetch_record['partner_link']);
 }

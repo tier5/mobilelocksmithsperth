@@ -6,7 +6,7 @@ require_once("session_check.php");
 if(isset($_GET['action']) && $_GET['action'] == "inactive")
 {
 	$sql_update = "UPDATE `ml_testimonials` SET `testimonial_status` = 'Inactive' WHERE `testimonial_id` = '".$_GET['testimonial_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Review de-activated successfully.';
 	header("location: testimonial_list.php");
@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == "inactive")
 if(isset($_GET['action']) && $_GET['action'] == "active")
 {
 	$sql_update = "UPDATE `ml_testimonials` SET `testimonial_status` = 'Active' WHERE `testimonial_id` = '".$_GET['testimonial_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Review activated successfully.';
 	header("location: testimonial_list.php");
@@ -28,8 +28,8 @@ if(isset($_GET['action']) && $_GET['action'] == "active")
 if(isset($_GET['action']) && $_GET['action'] == "delete")
 {
 	$sql_testimonial_image = "SELECT * FROM `ml_testimonials` WHERE `testimonial_id` = '".$_GET['testimonial_id']."'";
-	$exe_testimonial_image = mysql_query($sql_testimonial_image) or die(mysql_error());
-	while($arr_testimonial_image = mysql_fetch_array($exe_testimonial_image))
+	$exe_testimonial_image = mysqli_query($conn, $sql_testimonial_image) or die(mysqli_error());
+	while($arr_testimonial_image = mysqli_fetch_array($exe_testimonial_image))
 	{
 		if($arr_testimonial_image['sender_type'] == "General")
 		{
@@ -40,7 +40,7 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 			}
 		}
 	}
-	mysql_query("DELETE FROM `ml_testimonials` WHERE `testimonial_id` = '".$_GET['testimonial_id']."'") or die(mysql_error());
+	mysqli_query($conn, "DELETE FROM `ml_testimonials` WHERE `testimonial_id` = '".$_GET['testimonial_id']."'") or die(mysqli_error());
 	
 	$_SESSION['del_succ_msg'] = 'Review deleted successfully.';
 	header("location: testimonial_list.php");
@@ -89,11 +89,11 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 							<?php
 							$testimonial_counter = 1;
 							$sql_record = "SELECT * FROM `ml_testimonials` ORDER BY `testimonial_id` DESC";
-                            $exe_record = mysql_query($sql_record) or die();
-                            $num_record = mysql_num_rows($exe_record);
+                            $exe_record = mysqli_query($conn, $sql_record) or die();
+                            $num_record = mysqli_num_rows($exe_record);
                             if($num_record>0)
                             {
-                                while($fetch_record = mysql_fetch_array($exe_record))
+                                while($fetch_record = mysqli_fetch_array($exe_record))
                                 {
 									$testimonial = stripslashes($fetch_record['sender_comments']);
 									$posted_by = stripslashes($fetch_record['sender_name']);

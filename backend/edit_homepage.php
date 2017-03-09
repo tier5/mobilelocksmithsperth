@@ -32,7 +32,7 @@ if(isset($_POST['edit']))
 }
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
+$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_contents` WHERE `content_id` = '1'"));
 $page_content = stripslashes($fetch_record['content']);
 $content_image = stripslashes($fetch_record['content_image']);
 ?>

@@ -6,7 +6,7 @@ require_once("session_check.php");
 if(isset($_GET['action']) && $_GET['action'] == "No")
 {
 	$sql_update = "UPDATE `ml_services` SET `homepage_display` = 'No' WHERE `service_id` = '".$_GET['service_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Service status changed successfully.';
 	header("location: service_list.php");
@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == "No")
 if(isset($_GET['action']) && $_GET['action'] == "Yes")
 {
 	$sql_update = "UPDATE `ml_services` SET `homepage_display` = 'Yes' WHERE `service_id` = '".$_GET['service_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Service status changed successfully.';
 	header("location: service_list.php");
@@ -28,7 +28,7 @@ if(isset($_GET['action']) && $_GET['action'] == "Yes")
 if(isset($_GET['action']) && $_GET['action'] == "delete")
 {
 	$sql_service_image = "SELECT * FROM `ml_services` WHERE `service_id` = '".$_GET['service_id']."'";
-	$exe_service_image = mysql_query($sql_service_image) or die(mysql_error());
+	$exe_service_image = mysqli_query($conn, $sql_service_image) or die(mysqli_error());
 	while($arr_service_image = mysql_fetch_array($exe_service_image))
 	{
 		if($arr_service_image['service_image']!="")
@@ -38,7 +38,7 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 			unlink("../uploads/service/".$arr_service_image['service_image']);
 		}
 	}
-	mysql_query("DELETE FROM `ml_services` WHERE `service_id` = '".$_GET['service_id']."'") or die(mysql_error());
+	mysqli_query($conn, "DELETE FROM `ml_services` WHERE `service_id` = '".$_GET['service_id']."'") or die(mysqli_error());
 	
 	$_SESSION['del_succ_msg'] = 'Service deleted successfully.';
 	header("location: service_list.php");
@@ -105,11 +105,11 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 							<?php
 							$service_counter = 1;
 							$sql_record = "SELECT * FROM `ml_services` ORDER BY `service_id` DESC";
-                            $exe_record = mysql_query($sql_record) or die();
-                            $num_record = mysql_num_rows($exe_record);
+                            $exe_record = mysqli_query($conn, $sql_record) or die();
+                            $num_record = mysqli_num_rows($conn, $exe_record);
                             if($num_record>0)
                             {
-                                while($fetch_record = mysql_fetch_array($exe_record))
+                                while($fetch_record = mysqli_fetch_array($exe_record))
                                 {
 									$service_title = stripslashes($fetch_record['service_title']);
 									$service_content = substr(stripslashes($fetch_record['service_content']),0,350)."...";

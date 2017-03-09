@@ -40,7 +40,7 @@ if(isset($_POST['save']))
 	}	
 	
 	$sql_update = "UPDATE `ml_administrator` SET `admin_username` = '".addslashes($_POST['admin_username'])."',`company_name` = '".addslashes($_POST['company_name'])."',`contact_address` = '".addslashes($_POST['contact_address'])."',`contact_email` = '".addslashes($_POST['contact_email'])."',`contact_no` = '".addslashes($_POST['contact_no'])."',`abn_no` = '".addslashes($_POST['abn_no'])."',`owner_name_black` = '".addslashes($_POST['owner_name_black'])."',`owner_name_red` = '".addslashes($_POST['owner_name_red'])."',`owner_note` = '".addslashes($_POST['owner_note'])."',`owner_image` = '".$owner_image."',`banner_caption_tagline` = '".addslashes($_POST['banner_caption_tagline'])."',`gallery_text` = '".addslashes($_POST['gallery_text'])."',`facebook_link` = '".addslashes($_POST['facebook_link'])."',`gplus_link` = '".addslashes($_POST['gplus_link'])."',`youtube_link` = '".addslashes($_POST['youtube_link'])."',`service_image` = '".$service_image."' WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['save_succ_msg'] = 'Site settings updated successfully.';
 	header("location: site_settings.php");
@@ -48,7 +48,7 @@ if(isset($_POST['save']))
 }
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_administrator` WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'"));
+$fetch_record = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `ml_administrator` WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'"));
 $admin_username = stripslashes($fetch_record['admin_username']);
 $company_name = stripslashes($fetch_record['company_name']);
 $contact_address = stripslashes($fetch_record['contact_address']);

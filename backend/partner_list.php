@@ -6,7 +6,7 @@ require_once("session_check.php");
 if(isset($_GET['action']) && $_GET['action'] == "inactive")
 {
 	$sql_update = "UPDATE `ml_partners` SET `partner_status` = 'Inactive' WHERE `partner_id` = '".$_GET['partner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Partner de-activated successfully.';
 	header("location: partner_list.php");
@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == "inactive")
 if(isset($_GET['action']) && $_GET['action'] == "active")
 {
 	$sql_update = "UPDATE `ml_partners` SET `partner_status` = 'Active' WHERE `partner_id` = '".$_GET['partner_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($sql_update) or die(mysqli_error());
 	
 	$_SESSION['change_succ_msg'] = 'Partner activated successfully.';
 	header("location: partner_list.php");
@@ -28,15 +28,15 @@ if(isset($_GET['action']) && $_GET['action'] == "active")
 if(isset($_GET['action']) && $_GET['action'] == "delete")
 {
 	$sql_partner_image = "SELECT * FROM `ml_partners` WHERE `partner_id` = '".$_GET['partner_id']."'";
-	$exe_partner_image = mysql_query($sql_partner_image) or die(mysql_error());
-	while($arr_partner_image = mysql_fetch_array($exe_partner_image))
+	$exe_partner_image = mysqli_query($conn, $sql_partner_image) or die(mysqli_error());
+	while($arr_partner_image = mysqli_fetch_array($exe_partner_image))
 	{
 		if($arr_partner_image['partner_image']!="")
 		{
 			unlink("../uploads/partner/".$arr_partner_image['partner_image']);
 		}
 	}
-	mysql_query("DELETE FROM `ml_partners` WHERE `partner_id` = '".$_GET['partner_id']."'") or die(mysql_error());
+	mysqli_query($conn, "DELETE FROM `ml_partners` WHERE `partner_id` = '".$_GET['partner_id']."'") or die(mysqli_error());
 	
 	$_SESSION['del_succ_msg'] = 'Partner deleted successfully.';
 	header("location: partner_list.php");
@@ -103,11 +103,11 @@ if(isset($_GET['action']) && $_GET['action'] == "delete")
 							<?php
 							$partner_counter = 1;
 							$sql_record = "SELECT * FROM `ml_partners` ORDER BY `partner_id` DESC";
-                            $exe_record = mysql_query($sql_record) or die();
-                            $num_record = mysql_num_rows($exe_record);
+                            $exe_record = mysqli_query($conn, $sql_record) or die();
+                            $num_record = mysqli_num_rows($exe_record);
                             if($num_record>0)
                             {
-                                while($fetch_record = mysql_fetch_array($exe_record))
+                                while($fetch_record = mysqli_fetch_array($exe_record))
                                 {
 									$partner_image = stripslashes($fetch_record['partner_image']);
 									$partner_link = stripslashes($fetch_record['partner_link']);

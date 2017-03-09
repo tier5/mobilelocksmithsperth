@@ -2,7 +2,7 @@
 require_once("header.php");
 require_once("session_check.php");
 
-$total_visitors = mysql_num_rows(mysql_query("SELECT * FROM `ml_statistics`"));
+$total_visitors = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `ml_statistics`"));
 ?>
 
 <?php require_once("left_panel.php");?>
@@ -24,11 +24,11 @@ $total_visitors = mysql_num_rows(mysql_query("SELECT * FROM `ml_statistics`"));
                     <div class="block-fluid table-sorting clearfix">
 					<?php
                     $sql_year = "SELECT * FROM `ml_statistics` GROUP BY `visit_year`";
-                    $exe_year = mysql_query($sql_year) or die(mysql_error());
-                    $num_year = mysql_num_rows($exe_year);
+                    $exe_year = mysqli_query($conn, $sql_year) or die(mysqli_error());
+                    $num_year = mysqli_num_rows($exe_year);
                     if($num_year>0)
                     {
-                        while($fetch_year = mysql_fetch_array($exe_year))
+                        while($fetch_year = mysqli_fetch_array($exe_year))
                         {
                         ?>
                         <div class="head clearfix">
@@ -44,13 +44,13 @@ $total_visitors = mysql_num_rows(mysql_query("SELECT * FROM `ml_statistics`"));
                             <tbody>
 							<?php
                             $sql_month = "SELECT * FROM `ml_statistics` WHERE `visit_year` = '".$fetch_year['visit_year']."' GROUP BY `visit_month`";
-                            $exe_month = mysql_query($sql_month) or die(mysql_error());
-                            $num_month = mysql_num_rows($exe_month);
+                            $exe_month = mysqli_query($conn, $sql_month) or die(mysqli_error());
+                            $num_month = mysqli_num_rows($exe_month);
                             if($num_month>0)
                             {
-                                while($fetch_month = mysql_fetch_array($exe_month))
+                                while($fetch_month = mysqli_fetch_array($exe_month))
                                 {
-									$total_visitors_current_month = mysql_num_rows(mysql_query("SELECT * FROM ml_statistics WHERE `visit_month` = '".$fetch_month['visit_month']."' AND `visit_year` = '".$fetch_year['visit_year']."'"));
+									$total_visitors_current_month = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ml_statistics WHERE `visit_month` = '".$fetch_month['visit_month']."' AND `visit_year` = '".$fetch_year['visit_year']."'"));
                                 ?>
                                 <tr>
                                     <td><?php echo $fetch_month['visit_month'];?></td>

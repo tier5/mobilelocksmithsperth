@@ -6,7 +6,7 @@ require_once("session_check.php");
 if(isset($_POST['edit']))
 {
 	$sql_update = "UPDATE `ml_meta` SET `meta_title` = '".addslashes($_POST['meta_title'])."',`meta_keywords` = '".addslashes($_POST['meta_keywords'])."',`meta_description` = '".addslashes($_POST['meta_description'])."' WHERE `meta_id` = '".$_POST['meta_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['edit_succ_msg'] = 'SEO settings updated successfully.';
 	header("location: seo_settings.php");
@@ -14,7 +14,7 @@ if(isset($_POST['edit']))
 }
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_meta` WHERE `meta_id` = '".$_REQUEST['meta_id']."'"));
+$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_meta` WHERE `meta_id` = '".$_REQUEST['meta_id']."'"));
 $page_name = $fetch_record['page_name'];
 $meta_title = stripslashes($fetch_record['meta_title']);
 $meta_keywords = nl2br(stripslashes($fetch_record['meta_keywords']));

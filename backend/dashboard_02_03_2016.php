@@ -3,7 +3,7 @@ require_once("header.php");
 require_once("session_check.php");
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_administrator` WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'"));
+$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_administrator` WHERE `admin_id` = '".$_SESSION['LOGIN_ID']."'"));
 $no_of_visitors = $fetch_record['no_of_visitors'];
 ?>
 

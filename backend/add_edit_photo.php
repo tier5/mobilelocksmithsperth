@@ -58,7 +58,7 @@ if(isset($_POST['add']))
 	}
 	
 	$sql_insert = "INSERT INTO `ml_gallery` SET `gallery_name` = '".addslashes($_POST['gallery_name'])."',`gallery_pdf` = '".$gallery_pdf."',`gallery_image` = '".$gallery_image_insert."',`gallery_status` = 'Active'";
-	$exe_insert = mysql_query($sql_insert) or die(mysql_error());
+	$exe_insert = mysqli_query($conn, $sql_insert) or die(mysqli_error());
 	
 	$_SESSION['add_succ_msg'] = 'Photo addded successfully.';
 	header("location: photo_list.php");
@@ -133,7 +133,7 @@ if(isset($_POST['edit']))
 	}
 	
 	$sql_update = "UPDATE `ml_gallery` SET `gallery_name` = '".addslashes($_POST['gallery_name'])."',`gallery_pdf` = '".$gallery_pdf."',`gallery_image` = '".$gallery_image_insert."' WHERE `gallery_id` = '".$_REQUEST['gallery_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['edit_succ_msg'] = 'Photo updated successfully.';
 	header("location: photo_list.php");
@@ -143,7 +143,7 @@ if(isset($_POST['edit']))
 //FETCH DATA FROM DATABASE
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == "edit") 
 {
-	$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_gallery` WHERE `gallery_id` = '".$_REQUEST['gallery_id']."'"));
+	$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_gallery` WHERE `gallery_id` = '".$_REQUEST['gallery_id']."'"));
 	$gallery_name = stripslashes($fetch_record['gallery_name']);
 	$gallery_pdf = stripslashes($fetch_record['gallery_pdf']);
 	$gallery_image = stripslashes($fetch_record['gallery_image']);

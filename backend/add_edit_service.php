@@ -65,7 +65,7 @@ if(isset($_POST['add']))
 	}	
 	
 	$sql_update = "INSERT INTO `ml_services` SET `service_title` = '".addslashes($_POST['service_title'])."',`service_content` = '".addslashes($_POST['service_content'])."',`service_image` = '".$service_image_insert."',`service_icon` = '".$service_icon."',`service_status` = 'Active',`homepage_display` = 'No'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($conn, $sql_update) or die(mysqli_error());
 	
 	$_SESSION['add_succ_msg'] = 'Service added successfully.';
 	header("location: service_list.php");
@@ -139,7 +139,7 @@ if(isset($_POST['edit']))
 	}	
 	
 	$sql_update = "UPDATE `ml_services` SET `service_title` = '".addslashes($_POST['service_title'])."',`service_content` = '".addslashes($_POST['service_content'])."',`service_image` = '".$service_image_insert."',`service_icon` = '".$service_icon."' WHERE `service_id` = '".$_REQUEST['service_id']."'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($sql_update) or die(mysqli_error());
 	
 	$_SESSION['edit_succ_msg'] = 'Service updated successfully.';
 	header("location: service_list.php");
@@ -149,7 +149,7 @@ if(isset($_POST['edit']))
 //FETCH DATA FROM DATABASE
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == "edit") 
 {
-	$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_services` WHERE `service_id` = '".$_REQUEST['service_id']."'"));
+	$fetch_record = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `ml_services` WHERE `service_id` = '".$_REQUEST['service_id']."'"));
 	$service_title = stripslashes($fetch_record['service_title']);
 	$service_content = stripslashes($fetch_record['service_content']);
 	$service_icon = stripslashes($fetch_record['service_icon']);

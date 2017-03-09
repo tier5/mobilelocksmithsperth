@@ -24,7 +24,7 @@ if(isset($_POST['edit']))
 	}
 	
 	$sql_update = "UPDATE `ml_contents` SET `content` = '".addslashes($_POST['page_content'])."',`content_image` = '".$content_image."'  WHERE `content_id` = '3'";
-	$exe_update = mysql_query($sql_update) or die(mysql_error());
+	$exe_update = mysqli_query($sql_update) or die(mysqli_error());
 	
 	$_SESSION['save_succ_msg'] = 'Content updated successfully.';
 	header("location: edit_block2.php");
@@ -32,7 +32,7 @@ if(isset($_POST['edit']))
 }
 
 //FETCH DATA FROM DATABASE
-$fetch_record = mysql_fetch_array(mysql_query("SELECT * FROM `ml_contents` WHERE `content_id` = '3'"));
+$fetch_record = mysqli_fetch_array(mysql_query($conn, "SELECT * FROM `ml_contents` WHERE `content_id` = '3'"));
 $page_content = stripslashes($fetch_record['content']);
 $content_image = stripslashes($fetch_record['content_image']);
 ?>
